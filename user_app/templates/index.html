@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>SYSNEST VALLEY</title>
+    <link rel="icon" href="{% static 'img/1619108582628.jpg' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    {% for message in messages %}
+    <div id="myy" class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong>{{ message }} 
+    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+   
+        <h1><img style="height: 60px; width: 65px;" src="{% static 'img/1619108582628.jpg' %} " alt="">SYSNEST VALLEY TECHNOLOGY</h1> <hr> 
+        <!-- <h4>Hello <span style="color:red;">Mahantesh!</span> Welcome to <span style="color: blue;">SYSNEST VALLEY</span><br><hr> -->
+        <a class="btn btn-primary" href="/add_emp" role="button">Add Candidate</a>
+    <a class="btn btn-primary" href="/view_all" role="button">View All Candidate</a>
+    <a class="btn btn-primary" href="/remove" role="button">Remove Candidate</a>
+    <a class="btn btn-primary" href="/delete_all" role="button">Remove all Candidate</a>
+    <a class="btn btn-primary" href="/filter_emp" role="button">Search</a>
+<br><br>
+<a href="/sign_out" class="btn btn-danger">Sign out</a>
+    
+
+    {% else %}
+    <h1>Hello Everyone</h1>
+    <!-- <a href="/sign_up" btn-primary>Sign up</a> -->
+    <a href="/sign_in" btn-primary>Sign In</a>
+   
+
+    {% endif %}
+    <script>
+          var closeBtn = document.getElementsByClassName("close")[0];
+        
+        // Get the modal element
+        var my = document.getElementById("myy");
+        
+        // Function to close the modal when the close button is clicked
+        closeBtn.onclick = function() {
+            my.style.display = "none";
+        }
+    </script>
+</body>
+</html>
